@@ -1,0 +1,31 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="header">
+
+	<nav class="blue darken-4">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">JDT - SB MVC</a> <a href="#"
+				data-target="mobile-demo" class="sidenav-trigger"><i
+				class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<!-- replace dos links do menu para não ficar copiando e colando novos links -->
+				<div th:replace="fragments/common_fragments :: menu_links"></div>
+			</ul>
+		</div>
+	</nav>
+	<ul class="sidenav" id="mobile-demo">
+		<!-- replace dos links do menu para não ficar copiando e colando novos links -->
+		<div th:replace="fragments/common_fragments :: menu_links"></div>
+	</ul>
+
+
+	<div class="container">
+		<h1 class="center-align">JDev Treinamento - Spring Boot MVC</h1>
+	</div>
+</div>
+
+</html>
+
+

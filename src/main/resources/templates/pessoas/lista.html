@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/common_fragments :: common_header(~{::title},~{})">
+<meta charset="UTF-8">
+<title>Pessoas</title>
+</head>
+<body>
+
+	<header>
+		<div th:replace="fragments/header :: header"></div>
+	</header>
+
+	<main></main>
+	<div th:class="container">
+		<div class="divider"></div>
+
+		<!-- <p><span th:text="${pessoas}"></span></p>
+			<p>[[${pessoas}]]</p>
+			<p>[(${pessoas})]</p> -->
+
+		<div class="row">
+			<div class="col s12">
+				<h3>Lista de pessoas</h3>
+			</div>
+		</div>
+
+		<form th:action="@{/pessoas/busca}" method="post">
+			<div class="row">
+				<div class="col s4">
+					<input th:type="text" name="paramBusca"
+						th:placeholder="'Buscar Pessoas'" >
+				</div>
+				<div class="col s1">
+					<button class="btn waves-effect waves-light hoverable z-depth-5"
+						type="submit" name="action" th:text="'Buscar'">
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+		</form>
+
+		<table class="responsive-table centered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Sobrenome</th>
+					<th>Idade</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${pessoas}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.nome}"></td>
+					<td th:text="${p.sobrenome}"></td>
+					<td th:text="${p.idade}"></td>
+					<td><a
+						th:href="@{/pessoas/editar?id={pessoaId}(pessoaId=${p.id})}"><i
+							class="material-icons">edit</i></a> <a
+						th:href="@{/pessoas/remover?id={pessoaId}(pessoaId=${p.id})}"><i
+							class="material-icons">remove_circle_outline</i></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<div th:replace="fragments/common_fragments :: footer"></div>
+</body>
+</html>
